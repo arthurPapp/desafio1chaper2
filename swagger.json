@@ -1,0 +1,256 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Rental Documentation",
+    "description": "This is an API Rent",
+    "versio": "1.0.0",
+    "contact": {
+      "email": "arthur_papp@live.com"
+    }
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Create a category",
+        "description": "Create a new Category",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Teste Usuario",
+                  "email": "teste@tes.com"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Create",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "admin": {
+                      "type": "boolean"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "name": "Teste Usuario",
+                    "email": "teste@tes.com",
+                    "admin": false,
+                    "created_at": "2022-09-11T00:00:00.000",
+                    "updated_at": "2022-09-11T00:00:00.000"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "User already exists"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "List users",
+        "description": "List all user for admin",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "user_id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "admin": {
+                      "type": "boolean"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    }
+                  },
+                  "example": [
+                    {
+                      "name": "Teste Usuario",
+                      "email": "teste@tes.com",
+                      "admin": false,
+                      "created_at": "2022-09-11T00:00:00.000",
+                      "updated_at": "2022-09-11T00:00:00.000"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Users already exists"
+          }
+        }
+      }
+    },
+    "/{user_id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "get user for id",
+        "description": "get user for id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "admin": {
+                      "type": "boolean"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "name": "Teste Usuario",
+                    "email": "teste@tes.com",
+                    "admin": false,
+                    "created_at": "2022-09-11T00:00:00.000",
+                    "updated_at": "2022-09-11T00:00:00.000"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Users already exists"
+          }
+        }
+      }
+    },
+    "/{user_id}/admin": {
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "change permission",
+        "description": "change user permission to",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "admin": {
+                      "type": "boolean"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "name": "Teste Usuario",
+                    "email": "teste@tes.com",
+                    "admin": false,
+                    "created_at": "2022-09-11T00:00:00.000",
+                    "updated_at": "2022-09-11T00:00:00.000"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Users already exists"
+          }
+        }
+      }
+    }
+  }
+}
